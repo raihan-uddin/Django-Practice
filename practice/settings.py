@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_post',
     'fun_game',
-    'cost_management'
+    'cost_management',
+    'information'
 ]
 
 MIDDLEWARE = [
