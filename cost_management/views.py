@@ -20,3 +20,21 @@ def add_expense(request):
     return render(request, 'cost/add_expense.html', {
         'form': form
     })
+
+
+def edit_expense(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    if request.method == 'POST':
+        print("post request")
+        form = ExpenseForm(request.POST, instance=expense)
+        form.save()
+        return redirect('cost-list')
+    else:
+        form = ExpenseForm(instance=expense)
+    context = {'form':form}
+    return render(request, 'cost/edit_expense.html', context)
+
+def delete_expense(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    expense.delete()
+    return redirect('cost-list')
